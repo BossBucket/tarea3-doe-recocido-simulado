@@ -1,0 +1,35 @@
+{
+  "matricula": 2225447,
+  "r": 0.32438617530270386,
+  "t_min": 0.1,
+  "t_max": 50.0,
+  "sizes": [
+    5,
+    10,
+    15
+  ],
+  "offsets": {
+    "5": 0,
+    "10": 6,
+    "15": 3
+  },
+  "replicates": 10,
+  "iterations": 300,
+  "final_temperature": 0.001,
+  "levels": [
+    "bajo",
+    "medio",
+    "alto"
+  ],
+  "fractions": {
+    "bajo": 0.09731585259081116,
+    "medio": 0.39731585259081115,
+    "alto": 0.6973158525908112
+  },
+  "temperatures": {
+    "bajo": 4.956061044281476,
+    "medio": 19.92606104428148,
+    "alto": 34.89606104428148
+  },
+  "total_runs": 90
+}

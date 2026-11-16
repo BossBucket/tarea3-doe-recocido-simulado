@@ -29,21 +29,27 @@ def simulated_annealing(
     initial_temperature: float,
     seed: int,
     *,
-    cooling_rate: float = 0.95,
-    minimum_temperature: float = 1e-3,
-    iterations_per_temperature: int = 25,
+    iterations: int = 300,
+    final_temperature: float = 1e-3,
 ) -> float:
     """Optimize a symmetric Euclidean TSP and return its best cost.
+
+    The temperature follows a geometric schedule from ``initial_temperature``
+    to ``final_temperature`` over a fixed number of iterations.  A fixed budget
+    keeps every design point comparable: changing ``initial_temperature`` does
+    not change how many candidate tours are evaluated.
 
     A local ``random.Random`` instance is used so callers get reproducible
     results without changing the process-wide random-number generator.
     """
     if initial_temperature <= 0:
         raise ValueError("initial_temperature must be positive")
-    if not 0 < cooling_rate < 1:
-        raise ValueError("cooling_rate must be between zero and one")
-    if iterations_per_temperature < 1:
-        raise ValueError("iterations_per_temperature must be positive")
+    if final_temperature <= 0:
+        raise ValueError("final_temperature must be positive")
+    if final_temperature > initial_temperature:
+        raise ValueError("final_temperature must not exceed initial_temperature")
+    if iterations < 1:
+        raise ValueError("iterations must be positive")
 
     distances = distance_matrix(coordinates)
     rng = random.Random(seed)
@@ -52,17 +58,21 @@ def simulated_annealing(
     current_cost = tour_cost(current, distances)
     best_cost = current_cost
     temperature = float(initial_temperature)
+    if iterations > 1:
+        cooling = (final_temperature / initial_temperature) ** (1.0 / (iterations - 1))
+    else:
+        cooling = 1.0
 
-    while temperature > minimum_temperature:
-        for _ in range(iterations_per_temperature):
-            first = rng.randrange(0, len(current) - 1)
-            last = rng.randrange(first + 1, len(current))
-            candidate = current[:first] + current[first : last + 1][::-1] + current[last + 1 :]
-            candidate_cost = tour_cost(candidate, distances)
-            difference = candidate_cost - current_cost
-            if difference < 0 or rng.random() < math.exp(-difference / temperature):
-                current, current_cost = candidate, candidate_cost
-                best_cost = min(best_cost, current_cost)
-        temperature *= cooling_rate
+    for _ in range(iterations):
+        first = rng.randrange(0, len(current) - 1)
+        last = rng.randrange(first + 1, len(current))
+        candidate = current[:first] + current[first : last + 1][::-1] + current[last + 1 :]
+        candidate_cost = tour_cost(candidate, distances)
+        difference = candidate_cost - current_cost
+        if difference < 0 or rng.random() < math.exp(-difference / temperature):
+            current, current_cost = candidate, candidate_cost
+            if current_cost < best_cost:
+                best_cost = current_cost
+        temperature *= cooling
 
     return float(best_cost)

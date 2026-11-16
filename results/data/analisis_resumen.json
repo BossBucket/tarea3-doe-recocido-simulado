@@ -1,0 +1,108 @@
+{
+  "r": 0.32438617530270386,
+  "alpha": 0.05,
+  "temperatures": {
+    "bajo": 4.956061044281476,
+    "medio": 19.92606104428148,
+    "alto": 34.89606104428148
+  },
+  "fractions": {
+    "bajo": 0.09731585259081116,
+    "medio": 0.39731585259081115,
+    "alto": 0.6973158525908112
+  },
+  "iterations": 300,
+  "final_temperature": 0.001,
+  "replicates": 10,
+  "effects": {
+    "temperatura": {
+      "F": 3.1572355417048166,
+      "p": 0.04782456717552977,
+      "eta2": 0.0016219295508093465
+    },
+    "tamano": {
+      "F": 1897.3781504629524,
+      "p": 9.230103345978596e-69,
+      "eta2": 0.974717803168442
+    },
+    "interaccion": {
+      "F": 2.7784468113116025,
+      "p": 0.03223651110676232,
+      "eta2": 0.002854677726188865
+    }
+  },
+  "temperature_significant": true,
+  "optimal": [
+    {
+      "Tamano (n)": 5,
+      "Nivel": "bajo",
+      "Temperatura (T*)": 4.956061044281476,
+      "Mediana bootstrap": 124.06386066518559,
+      "IC 95% inferior": 124.06386066518559,
+      "IC 95% superior": 124.06386066518559,
+      "Replicas": 10
+    },
+    {
+      "Tamano (n)": 10,
+      "Nivel": "bajo",
+      "Temperatura (T*)": 4.956061044281476,
+      "Mediana bootstrap": 264.16394602173125,
+      "IC 95% inferior": 264.16394602173125,
+      "IC 95% superior": 264.1639460217313,
+      "Replicas": 10
+    },
+    {
+      "Tamano (n)": 15,
+      "Nivel": "medio",
+      "Temperatura (T*)": 19.92606104428148,
+      "Mediana bootstrap": 339.34588981718514,
+      "IC 95% inferior": 339.34588981718514,
+      "IC 95% superior": 349.4482298944079,
+      "Replicas": 10
+    }
+  ],
+  "robustness": {
+    "sin_n5": {
+      "temperatura": {
+        "F": 3.1572355417048836,
+        "p": 0.05049523236513956,
+        "eta2": 0.013996117671730672
+      },
+      "tamano": {
+        "F": 385.53992038671834,
+        "p": 2.9839676157612815e-26,
+        "eta2": 0.8545548822069117
+      },
+      "interaccion": {
+        "F": 2.6521839011804946,
+        "p": 0.07966932529769752,
+        "eta2": 0.01175720894993702
+      }
+    },
+    "por_tamano": [
+      {
+        "Tamano": 5,
+        "F": NaN,
+        "p-value": NaN,
+        "eta2": NaN,
+        "Nota": "sin varianza residual (todas las corridas convergen)"
+      },
+      {
+        "Tamano": 10,
+        "F": 0.9747845227700651,
+        "p-value": 0.39015971483124495,
+        "eta2": 0.0673436292772888,
+        "Nota": ""
+      },
+      {
+        "Tamano": 15,
+        "F": 3.058473516292202,
+        "p-value": 0.06349387820205692,
+        "eta2": 0.18470745587042856,
+        "Nota": ""
+      }
+    ],
+    "levene_p": 1.784202031060898e-05
+  },
+  "bootstrap_samples": 10000
+}

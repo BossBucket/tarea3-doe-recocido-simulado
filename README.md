@@ -1,13 +1,9 @@
-# Tarea 3 — Ajuste de temperatura en Recocido Simulado (TSP) mediante DOE
+# DOE — Ajuste de temperatura en Recocido Simulado (TSP)
 
 Ajuste del parámetro de temperatura inicial T₀ de un recocido simulado con vecindario
 2-opt para el problema del agente viajero (TSP), usando un diseño factorial completo
 3 × 3 (Opción A), ANOVA de dos factores, bootstrap y gráficas de efectos.
 
-- **Repositorio:** https://github.com/BossBucket/tarea3-doe-recocido-simulado
-- **Reporte PDF:** [report/reporte.pdf](report/reporte.pdf)
-- **Versión editable:** [report/reporte_editable.docx](report/reporte_editable.docx)
-- **Matrícula:** 2225447
 
 ## Resumen del experimento
 

@@ -29,9 +29,9 @@ def simulated_annealing(
     initial_temperature: float,
     seed: int,
     *,
-    cooling_rate: float = 0.995,
+    cooling_rate: float = 0.95,
     minimum_temperature: float = 1e-3,
-    iterations_per_temperature: int = 100,
+    iterations_per_temperature: int = 25,
 ) -> float:
     """Optimize a symmetric Euclidean TSP and return its best cost.
 
